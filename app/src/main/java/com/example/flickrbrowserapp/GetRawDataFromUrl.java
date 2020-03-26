@@ -28,6 +28,7 @@ class GetRawDataFromUrl extends AsyncTask<String, Void, String> {
     public GetRawDataFromUrl(OnDownloadComplete mCallback) {
         this.mDownloadStatus= DownloadStatus.IDLE;
         this.mCallback = mCallback;
+        System.out.println("text");
     }
 
 
