@@ -21,6 +21,7 @@ class GetRawDataFromUrl extends AsyncTask<String, Void, String> {
 
     interface OnDownloadComplete{
         void onDownloadComplete(String data, DownloadStatus status);
+
     }
 
 
@@ -36,6 +37,7 @@ class GetRawDataFromUrl extends AsyncTask<String, Void, String> {
         if(mCallback != null){
             mCallback.onDownloadComplete(s, mDownloadStatus);
         }
+        System.out.println("texst");
         Log.d(TAG, "onPostExecute: ends");
     }
 
