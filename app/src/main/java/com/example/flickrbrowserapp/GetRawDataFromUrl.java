@@ -28,17 +28,29 @@ class GetRawDataFromUrl extends AsyncTask<String, Void, String> {
     public GetRawDataFromUrl(OnDownloadComplete mCallback) {
         this.mDownloadStatus= DownloadStatus.IDLE;
         this.mCallback = mCallback;
-        System.out.println("text");
+    }
+
+
+    void runningSameThread(String s){
+        Log.d(TAG, "runningSameThread:  starts");
+        //onPostExecute(doInBackground(s));
+
+        if(mCallback != null){
+            //String result = doInBackground(s);
+            //mCallback.onDownloadComplete(result, mDownloadStatus);
+            mCallback.onDownloadComplete(doInBackground(s), mDownloadStatus);
+        }
+
+        Log.d(TAG, "runningSameThread:  ends");
     }
 
 
     @Override
     protected void onPostExecute(String s) {
-        Log.d(TAG, "onPostExecute:  parameter = " + s);
+        //Log.d(TAG, "onPostExecute:  parameter = " + s);
         if(mCallback != null){
             mCallback.onDownloadComplete(s, mDownloadStatus);
         }
-        System.out.println("texst");
         Log.d(TAG, "onPostExecute: ends");
     }
 
@@ -89,4 +101,30 @@ class GetRawDataFromUrl extends AsyncTask<String, Void, String> {
         mDownloadStatus=DownloadStatus.FAILED_OR_EMPTY;
         return null;
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
